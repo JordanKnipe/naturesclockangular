@@ -25,7 +25,7 @@ jobs:
       #  run: npm run lint
 
       - name: Build
-        run: npm run build
+        run: ng build --configuration=production
 
       - name: Deploy to S3
         run: aws s3 sync dist/ s3://natures-clock-s3 --delete
