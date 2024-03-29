@@ -1,0 +1,40 @@
+<div class="timelineContainer">
+    @if (!isLoading) {
+        
+      @for (year of timelineData; track year) {
+        <div class="yearContainer">
+        @for (month of year.months; track month) {
+            <div class="monthContainer">
+            @for (week of month.weeks; track week) {
+                <div class="timelineItem" [class.selected-week]="selectedWeek?.weekNumber === week.weekNumber" (click)="handleWeekClick(week)">
+                    <div>
+                        Week {{ week.weekNumber }}
+                    </div>
+                <div>
+                    {{ week.start | date: 'MMM dd' }}
+                </div>
+                    @if (week.isCurrentWeek) {
+                        <span>Current Week</span>
+                    }
+                    @if (week.isEndOfYear) {
+                        <span>End of Year</span>
+                    }
+                </div>
+            }
+        </div>
+        }
+       
+            
+      
+    </div>
+    
+    }
+    
+
+} @else {
+    <div>Loading...</div>
+}
+
+</div>
+
+<app-vegetable-info-box [weekInfo]="selectedWeek"></app-vegetable-info-box>

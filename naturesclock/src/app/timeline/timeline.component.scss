@@ -1,0 +1,92 @@
+.timelineContainer {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .yearContainer {
+    margin-right: 50px; /* Adjust as needed */
+  }
+  
+  .monthContainer {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 10px; /* Adjust as needed */
+  }
+  
+  .monthLabel {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .weeksContainer {
+    display: flex;
+  }
+  
+  .timelineItem {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+  }
+  
+  .timelineDate {
+    margin-bottom: 5px;
+  }
+  
+  .timelineMarker {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #333;
+    margin-bottom: 5px;
+  }
+  
+  .weekLabel {
+    font-size: 12px;
+    text-align: center;
+  }
+  
+  .currentWeek .timelineMarker, .currentWeek .timelineLine {
+    background: #4CAF50; /* Highlight color */
+  }
+  
+  .timelineLine {
+    width: 2px;
+    height: 50px; /* Adjust the height as per your design */
+    background-color: #333;
+    position: relative;
+  }
+  
+  /* Hide scrollbar aesthetically */
+  .timelineContainer::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .timelineContainer {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Optional: add some shadow or other effects to current week */
+  .currentWeek {
+    position: relative;
+    /* Shadow effect */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
+  
+  /* If the week is clickable, you can add hover effects */
+  .timelineItem:hover {
+    background-color: #f5f5f5; /* Light hover effect */
+    cursor: pointer;
+  }
+  .selected-week {
+    background-color: #a8dadc; /* Or any color you prefer */
+  }
+  
