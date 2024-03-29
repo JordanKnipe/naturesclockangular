@@ -26,13 +26,14 @@ jobs:
       - name: Install Angular CLI
         run: npm install -g @angular/cli
         working-directory: ./naturesclock/
-        
+
       - name: Build
         run: ng build --configuration=production
         working-directory: ./naturesclock/
 
       - name: Deploy to S3
         run: aws s3 sync dist/ s3://natures-clock-s3 --delete
+        working-directory: ./naturesclock/
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
