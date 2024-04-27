@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { startOfWeek, subMonths, getWeek, getYear, isSameWeek, addWeeks } from 'date-fns';
 
+/** data pulled in from http request to display on week box */
 export interface WeekInfo {
   start: Date;
   weekNumber: number;
@@ -18,6 +19,7 @@ interface TimelineData {
 })
 export class TimelineDataService {
   constructor() {}
+  /** generate the timeline */
   generateTimeline() {
     const timeline = [];
     let weekStart = startOfWeek(subMonths(new Date(), 6));

@@ -9,7 +9,7 @@ import { LoginCallbackComponent } from './login-callback/login-callback.componen
 export const routes: Routes = [
   { path: 'login-callback', component: LoginCallbackComponent },
   {
-    path: '',
+    path: 'home',
     component: HomePageComponent,
     canActivate: [AuthGuard]
   },

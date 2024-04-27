@@ -16,16 +16,17 @@ export class TimelineComponent implements OnInit {
   isLoading = true;
 
   constructor(private timelineDataService: TimelineDataService) {}
+empty:string = " "
 
-  ngOnInit(): void {
-    this.timelineData = this.timelineDataService.generateTimeline();
-    // Simulating async operation
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1000);
-  }
+async ngOnInit() {
+  this.timelineData = await this.timelineDataService.generateTimeline();
+  this.isLoading = false; // Set isLoading to false after the data is loaded
+}
 
-  handleWeekClick(weekInfo: WeekInfo): void {
+/** Handles click event on timeline week 
+ * @param {WeekInfo} WeekInfo array of strings
+*/
+handleWeekClick(weekInfo: WeekInfo): void {
     this.selectedWeek = weekInfo;
     console.log(this.selectedWeek,"Selected Week");
   }

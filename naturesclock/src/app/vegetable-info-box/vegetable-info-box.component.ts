@@ -26,18 +26,22 @@ export class VegetableInfoBoxComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchData();
+
+    
   }
 
   ngOnChanges(): void {
     this.fetchData();
   }
 
+  /** fetch data and  make it json readable */
   async fetchData(): Promise<void> {
     console.log(this.weekInfo);
     if (this.weekInfo && this.weekInfo.weekNumber !== undefined && this.weekInfo.weekNumber !== null) {
       this.isLoading = true;
       try {
         const result = await fetchVegetablesAndHerbs(this.weekInfo.weekNumber, 2024, 'Melbourne', -37, 144);
+        
         console.log('API result:', result);
         if (result.matching_vegetables && Array.isArray(result.matching_vegetables)) {
           const convertedResult = result.matching_vegetables.map(this.convertDynamoDBData);
@@ -52,12 +56,12 @@ export class VegetableInfoBoxComponent implements OnInit {
       }
     }
   }
-
+/** Converts data to fit the vegetable interface */
   convertDynamoDBData(dynamoData: any): Vegetable {
     const convertedData: Vegetable = {
       vegetableID: dynamoData.vegetableID?.toString() || '',
       Name: dynamoData.Vegetable || 'Unknown',
-      CareTips: `Care tips value: ${dynamoData.TestValue}` || 'No care tips available',
+      CareTips: `Care tips value: ${dynamoData.Care_Tips}` || 'No care tips available',
     };
     return convertedData;
   }

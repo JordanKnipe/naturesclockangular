@@ -7,19 +7,27 @@
             <div class="monthContainer">
             @for (week of month.weeks; track week) {
                 <div class="timelineItem" [class.selected-week]="selectedWeek?.weekNumber === week.weekNumber" (click)="handleWeekClick(week)">
-                    <div>
+                    <div class="week">
                         Week {{ week.weekNumber }}
                     </div>
-                <div>
+                    
+                <div class="date">
                     {{ week.start | date: 'MMM dd' }}
                 </div>
+                
                     @if (week.isCurrentWeek) {
-                        <span>Current Week</span>
+                        <span class="special-week">Current Week</span>
                     }
                     @if (week.isEndOfYear) {
-                        <span>End of Year</span>
+                        <span class="special-week">End of Year</span>
                     }
+                    @else{
+                        <span class="empty"></span>
+                    }
+                    <div class="timelineMarker"></div>
+                    <div class="timelineLine"></div>
                 </div>
+                
             }
         </div>
         }
@@ -32,7 +40,7 @@
     
 
 } @else {
-    <div>Loading...</div>
+    <div class="loading">Loading...</div>
 }
 
 </div>

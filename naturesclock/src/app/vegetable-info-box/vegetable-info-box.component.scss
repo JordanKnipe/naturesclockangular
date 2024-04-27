@@ -1,14 +1,34 @@
 .infoBox {
-    background-color: #494f5a;
-    height: 70vh;
+  background: var(--color-inverse-background-gradient);
+    min-height: 100vh;
     width: 100%;
     padding-top: 0px;
-    margin-top: 0px;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+
+    
+    z-index: -1;
+
   }
-  
+  .card-container{
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    padding-top: 40px;
+  }
+  .developer-note{
+    padding: 1rem;
+    color: rgb(228, 84, 84) !important;
+    text-align: center;
+   
+  }
+
   .infoBox h3 {
     margin-top: 0;
-    color: #6d6d6d;
+    color: var(--color-lower);
   }
   
   .infoBox ul {
@@ -23,7 +43,40 @@
   .selectWeekMessage {
     text-align: center;
     padding: 20px;
-    color: #666;
+    color: #ffffff;
     font-size: 18px;
+    font-weight: 300;
   }
-  
+  .item-card {
+    border-radius: 5px;
+    background-color: var(--color-timeline);
+    margin: 5px;
+    margin-bottom: 2rem;
+    max-width: 200px;
+    max-height: 250px;
+    min-height: 150px;
+    min-width: 200px;
+    color: var(--color-lower);
+    box-shadow: 1px 1px 3px 2px #0000000c;
+  }
+  .item-card img{
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 1rem;
+  }
+  .item-card:hover{
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  .item-card-content{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-wrap:wrap;
+    max-width: 350px;
+  }

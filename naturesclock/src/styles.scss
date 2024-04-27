@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  
+    
+   
+}
+
+[data-theme="light"] {
+     //Lightmode:
+     --color-main-theme: #6d806e;
+     --color-timeline: #f6fff4;
+     --color-lower: #c3dac4;
+     --color-mid: #def1da;
+     --color-higher: #ffffff;
+     --text-color:black;
+     --color-background-gradient: linear-gradient(to top,var(--color-lower), var(--color-mid), var(--color-higher));
+     --color-inverse-background-gradient: linear-gradient(to bottom,var(--color-lower), var(--color-mid), var(--color-higher));
+  }
+  
+  [data-theme="dark"] {
+    --color-main-theme: #3a3f5a;
+    --color-timeline: #d3e6ff;
+    --text-color:rgb(255, 255, 255);
+    --color-lower: #4e5685;
+    --color-mid: #82a2c9;
+    --color-higher: #a3bbdb;
+    --color-background-gradient: linear-gradient(to top,var(--color-lower), var(--color-mid), var(--color-higher));
+    --color-inverse-background-gradient: linear-gradient(to bottom,var(--color-lower), var(--color-mid), var(--color-higher));
+ 
+  }
+
+*{
+    font-family: 'Roboto';
+    margin: 0px;
+}

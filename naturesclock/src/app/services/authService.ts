@@ -4,15 +4,19 @@ import { buildCognitoLoginUrl, parseCognitoResponse } from './cognitoUtils';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  
+  /** check for token */
   isAuthenticated(): boolean {
     const idToken = localStorage.getItem('id_token');
     return !!idToken;
   }
-
+  /**
+   * handle redirect from cognito url
+   */
   login(): void {
     window.location.href = buildCognitoLoginUrl();
   }
-
+  /** set token and navigate '' */
   handleLoginCallback(): void {
     const tokens = parseCognitoResponse(window.location.hash);
     if (tokens.id_token) {

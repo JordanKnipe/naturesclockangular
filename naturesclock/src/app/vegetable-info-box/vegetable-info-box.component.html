@@ -1,18 +1,28 @@
 <div class="infoBox">
     @if (weekInfo) {
-        <h3>Vegetables for Week {{ weekInfo.weekNumber }}</h3>
+        <div class="developer-note">
+        <p><strong>Developer Note:</strong></p>
+       <p> This is mock/test data and is not currently accurate    </p>
+    </div>
+        <div class="card-container">
         @if (isLoading) {
             <p>Loading...</p>
         } @else {
             @if (data.length > 0) {
                 @for (veg of data; track veg) {
-                    <h3>{{ veg.Name }}</h3>
-                    <p>Care Tips: {{ veg.CareTips }}</p>
+                    <div class="item-card">
+                        <div class="item-card-content">
+                            <h3>{{ veg.Name }}</h3>
+                            <img src="../../assets/natures-clock-logo.webp">
+                        <p>{{ veg.CareTips }}</p>
+                    </div>
+                    </div>
                 }
             } @else {
                 <p>No vegetables found for this week.</p>
             }
         }
+    </div>
     } @else {
         <div class="selectWeekMessage">Select a week to see vegetables</div>
     }

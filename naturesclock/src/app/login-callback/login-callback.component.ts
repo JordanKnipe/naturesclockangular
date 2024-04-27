@@ -12,6 +12,6 @@ export class LoginCallbackComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.handleLoginCallback();
-    this.router.navigate(['/timeline']);
+    this.router.navigate(['/home']);
   }
 }
