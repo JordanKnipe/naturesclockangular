@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { fetchVegetablesAndHerbs } from '../services/apiService'; // Adjust the import path as necessary
 
+
 interface WeekInfo {
   weekNumber: number | null;
 }
@@ -21,7 +22,7 @@ export class VegetableInfoBoxComponent implements OnInit {
   @Input() weekInfo: WeekInfo | null = null;
   data: Vegetable[] = [];
   isLoading = false;
-  
+  climateData: any;
   constructor() { }
 
   ngOnInit(): void {
@@ -40,6 +41,7 @@ export class VegetableInfoBoxComponent implements OnInit {
     if (this.weekInfo && this.weekInfo.weekNumber !== undefined && this.weekInfo.weekNumber !== null) {
       this.isLoading = true;
       try {
+       
         const result = await fetchVegetablesAndHerbs(this.weekInfo.weekNumber, 2024, 'Melbourne', -37, 144);
         
         console.log('API result:', result);

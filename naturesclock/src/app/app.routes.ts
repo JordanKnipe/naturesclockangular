@@ -7,6 +7,7 @@ import { AuthGuard } from './services/auth.guard';
 import { LoginCallbackComponent } from './login-callback/login-callback.component';
 
 export const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login-callback', component: LoginCallbackComponent },
   {
     path: 'home',
