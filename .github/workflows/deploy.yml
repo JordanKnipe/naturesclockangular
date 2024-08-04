@@ -21,10 +21,18 @@ jobs:
       - name: Install dependencies
         run: npm install
         working-directory: ./naturesclock/
-     # - name: Lint
-      #  run: npm run lint
+        
       - name: Install Angular CLI
         run: npm install -g @angular/cli
+        working-directory: ./naturesclock/
+      
+      - name: Create env.js file
+        run: |
+          echo "window.env = {" > ./src/assets/env.js
+          echo "  COGNITO_DOMAIN: '${{ secrets.COGNITO_DOMAIN }}'," >> ./src/assets/env.js
+          echo "  CLIENT_ID: '${{ secrets.CLIENT_ID }}'," >> ./src/assets/env.js
+          echo "  REDIRECT_URI: '${{ secrets.REDIRECT_URI }}'" >> ./src/assets/env.js
+          echo "};" >> ./src/assets/env.js
         working-directory: ./naturesclock/
 
       - name: Build
