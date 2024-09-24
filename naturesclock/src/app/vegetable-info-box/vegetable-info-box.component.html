@@ -3,7 +3,14 @@
         <div class="developer-note">
         <p><strong>Developer Note:</strong></p>
        <p> This is mock/test data and is not currently accurate    </p>
+       
     </div>
+    <div class="toolbar">
+        <div class="filter-tool" (click)="AlphabeticalDynamoDBData()">
+            <i class="fa-solid fa-filter"></i>
+        </div>
+    </div>
+    
         <div class="card-container">
         @if (isLoading) {
             <p>Loading...</p>

@@ -38,7 +38,7 @@ export class VegetableInfoBoxComponent implements OnInit {
   /** fetch data and  make it json readable */
   async fetchData(): Promise<void> {
     console.log(this.weekInfo);
-    if (this.weekInfo && this.weekInfo.weekNumber !== undefined && this.weekInfo.weekNumber !== null) {
+    if (this.weekInfo?.weekNumber) {
       this.isLoading = true;
       try {
        
@@ -46,8 +46,7 @@ export class VegetableInfoBoxComponent implements OnInit {
         
         console.log('API result:', result);
         if (result.matching_vegetables && Array.isArray(result.matching_vegetables)) {
-          const convertedResult = result.matching_vegetables.map(this.convertDynamoDBData);
-          this.data = convertedResult;
+          this.data = result.matching_vegetables.map(this.convertDynamoDBData);
         } else {
           this.data = [];
         }
@@ -67,4 +66,10 @@ export class VegetableInfoBoxComponent implements OnInit {
     };
     return convertedData;
   }
+/** Converts data to fit the vegetable interface */
+AlphabeticalDynamoDBData(): void {
+  console.log("alphebtical")
+  this.data.sort((a, b) => a.Name.localeCompare(b.Name));
+}
+
 }
