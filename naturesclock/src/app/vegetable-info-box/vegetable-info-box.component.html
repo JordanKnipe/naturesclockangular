@@ -9,6 +9,15 @@
         <div class="filter-tool" (click)="AlphabeticalDynamoDBData()">
             <i class="fa-solid fa-filter"></i>
         </div>
+        <div class="order-by">
+            <select (change)="onSortOptionChange($event)">
+                @for (item of dropdownOptions; track $index) {
+                <option>
+                    {{item}}
+                </option>
+            }
+            </select>
+        </div>
     </div>
     
         <div class="card-container">

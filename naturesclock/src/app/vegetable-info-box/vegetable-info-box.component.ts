@@ -10,6 +10,14 @@ interface Vegetable {
   vegetableID: string;
   Name: string;
   CareTips: string;
+  Day_Temp_Min: number;
+  Day_Temp_Max: number;
+  Daylight_Min: number;
+  Daylight_Optimal: number;
+  Humidity_Max: number;
+  Humidity_Min: number;
+  Night_Temp_Max: number;
+  Night_Temp_Min: number;
 }
 
 @Component({
@@ -23,6 +31,10 @@ export class VegetableInfoBoxComponent implements OnInit {
   data: Vegetable[] = [];
   isLoading = false;
   climateData: any;
+
+  dropdownOptions = ["Sort By", "Alphabetical", "Day Min Temperature", "Day Max Temperature", "Day Min Temperature", "Night Max Temperature", "Min Humidity", "Max Humidity"]
+  selectedOption: string = this.dropdownOptions[0];
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -63,9 +75,36 @@ export class VegetableInfoBoxComponent implements OnInit {
       vegetableID: dynamoData.vegetableID?.toString() || '',
       Name: dynamoData.Vegetable || 'Unknown',
       CareTips: `Care tips value: ${dynamoData.Care_Tips}` || 'No care tips available',
+      Day_Temp_Min: dynamoData.Day_Temp_Min,
+      Day_Temp_Max: dynamoData.Day_Temp_Max,
+      Daylight_Min: dynamoData.Daylight_Min,
+      Daylight_Optimal: dynamoData.Daylight_Optimal,
+      Humidity_Max: dynamoData.Humidity_Max,
+      Humidity_Min: dynamoData.Humidity_Min,
+      Night_Temp_Max: dynamoData.Night_Temp_Max,
+      Night_Temp_Min: dynamoData.Night_Temp_Min,
     };
     return convertedData;
   }
+
+  onSortOptionChange(selectedValue: Event): void {
+    const selectElement = selectedValue.target as HTMLSelectElement; // Correctly casting the event target
+    this.selectedOption = selectElement.value; // Accessing the value property
+    console.log("alpha")
+    console.log(this.selectedOption.valueOf)
+    switch(this.selectedOption) {
+      case "Alphabetical":
+        this.data.sort((a, b) => a.Name.localeCompare(b.Name));
+        break;
+      case "Min Day Temperature":
+        this.data.sort((a, b) => a.Day_Temp_Min.toString().localeCompare(b.Day_Temp_Min.toString(), undefined, {numeric:true}));
+        break;
+      case "Max Day Temperature":
+        this.data.sort((a, b) => b.Day_Temp_Max.toString().localeCompare(a.Day_Temp_Max.toString(), undefined, {numeric:true}));
+        break;
+    }
+  }
+
 /** Converts data to fit the vegetable interface */
 AlphabeticalDynamoDBData(): void {
   console.log("alphebtical")
